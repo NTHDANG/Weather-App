@@ -4,17 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "serve -s dist",
-    "clean": "rm -rf dist && mkdir dist",
     "dev": "vite",
-    "build": "pnpm run clean && vite build",
-    "production": "cross-env BUILD_MODE=production pnpm run build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build": "vite build",
+    "lint": "eslint src --ext js --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "start": "cross-env serve -s dist"
   },
   "dependencies": {
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "serve": "^14.2.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
@@ -30,8 +29,7 @@
     "globals": "^16.2.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.10",
-    "vite": "^7.0.0",
-    "serve": "^14.2.3",
+    "vite": "^5.0.0",
     "cross-env": "^7.0.3"
   }
 }
