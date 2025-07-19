@@ -51,6 +51,14 @@ const Weather = () => {
         }`;
         // gọi api
         const response = await fetch(url);
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.log(`Error: ${errorData.message || response.statusText}`);
+          setWeatherData(false);
+          return;
+        }
+
         const data = await response.json();
 
         // xử lý lỗi nếu không tìm thấy thành phố
@@ -84,7 +92,7 @@ const Weather = () => {
   }, [search]);
 
   return (
-    <div className="p-10 rounded-[10px] flex flex-col items-center">
+    <div className="p-5 rounded-[5px] flex flex-col items-center">
       {/* tiêu đề ứng dụng */}
       <h2 className="text-5xl sm:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 drop-shadow-lg mb-10">
         Weather App
@@ -95,7 +103,7 @@ const Weather = () => {
           ref={inputRef}
           type="text"
           placeholder="Enter City Name"
-          className="h-[50px] border-none outline-none rounded-full pl-[25px] text-stone-300 bg-neutral-800"
+          className="h-[25px] border-none outline-none rounded-full pl-[12.5px] text-stone-300 bg-neutral-800"
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               search(inputRef.current.value);
@@ -106,38 +114,38 @@ const Weather = () => {
           src={search_icon}
           alt=""
           onClick={() => search(inputRef.current.value)}
-          className="w-[50px] p-[15px] rounded-full bg-neutral-800 cursor-pointer"
+          className="w-[25px] p-[7.5px] rounded-full bg-neutral-800 cursor-pointer"
         />
       </div>
       {/* hiển thị dữ liệu thời tiết hoặc thông báo */}
       {weatherData ? (
         <>
-          <img src={weatherData.icon} alt="" className="w-[150px] mt-[40px]" />
-          <p className="text-stone-300 text-[90px]">
+          <img src={weatherData.icon} alt="" className="w-[75px] mt-[20px]" />
+          <p className="text-stone-300 text-[45px]">
             {weatherData.temperature}°c
           </p>
-          <p className="text-stone-300 text-[40px]">{weatherData.location}</p>
-          <div className="w-full mt-[100px] text-stone-300 flex justify-around">
+          <p className="text-stone-300 text-[20px]">{weatherData.location}</p>
+          <div className="w-full mt-[50px] text-stone-300 flex justify-around">
             {/* độ ẩm */}
-            <div className="flex items-start gap-3 text-[26px]">
-              <img src={humidity_icon} alt="" className="w-[26px] mt-[10px]" />
+            <div className="flex items-start gap-1.5 text-[13px]">
+              <img src={humidity_icon} alt="" className="w-[13px] mt-[5px]" />
               <div>
                 <p>{weatherData.humidity}%</p>
-                <span className="block text-[16px]">Humidity</span>
+                <span className="block text-[8px]">Humidity</span>
               </div>
             </div>
             {/* tốc độ gió */}
-            <div className="flex items-start gap-3 text-[26px]">
-              <img src={wind_icon} alt="" className="w-[26px] mt-[10px]" />
+            <div className="flex items-start gap-1.5 text-[13px]">
+              <img src={wind_icon} alt="" className="w-[13px] mt-[5px]" />
               <div>
                 <p>{weatherData.windSpeed} Km/h</p>
-                <span className="block text-[16px]">Wind Speed</span>
+                <span className="block text-[8px]">Wind Speed</span>
               </div>
             </div>
           </div>
         </>
       ) : (
-        <p className="text-stone-300 text-2xl mt-10">
+        <p className="text-stone-300 text-base mt-5">
           Enter a city to get weather data.
         </p>
       )}
