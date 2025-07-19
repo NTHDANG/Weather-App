@@ -94,7 +94,7 @@ const Weather = () => {
   return (
     <div className="p-5 rounded-[5px] flex flex-col items-center">
       {/* tiêu đề ứng dụng */}
-      <h2 className="text-5xl sm:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 drop-shadow-lg mb-10">
+      <h2 className="text-5xl sm:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 drop-shadow-lg mb-10 mt-30">
         Weather App
       </h2>
       {/* input tìm kiếm và nút search */}
