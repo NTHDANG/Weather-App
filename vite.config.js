@@ -12,4 +12,9 @@ export default defineConfig({
     host: true,
     allowedHosts: ['weather-app-dvto.onrender.com'],
   },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.js',
+  },
 });
