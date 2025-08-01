@@ -11,15 +11,21 @@ const ForecastDisplay = ({ forecastData }) => {
   const groupedByTimeOfDay = groupForecastByTimeOfDay(forecastData.list);
 
   return (
-    <div className="w-full mt-30 text-stone-300">
-      <h3 className="text-4xl font-bold mb-5 flex items-center justify-center text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 drop-shadow-lg">
+    <div
+      className="w-full mt-30"
+      style={{ color: "var(--color-text-primary)" }}
+    >
+      <h3
+        className="text-4xl font-bold mb-5 flex items-center justify-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 drop-shadow-lg"
+      >
         Dự báo 5 ngày tới
       </h3>
       <div className="flex flex-wrap justify-center gap-4 mt-10">
         {groupedByTimeOfDay.map((dayData) => (
           <div
             key={dayData.date}
-            className="bg-neutral-700 p-4 rounded-lg flex flex-col items-center min-w-[150px]"
+            className="p-4 rounded-lg flex flex-col items-center min-w-[150px]"
+            style={{ backgroundColor: "var(--color-card-bg)" }}
           >
             <p className="font-semibold mb-2">
               {new Date(dayData.date).toLocaleDateString("vi-VN", {
@@ -41,7 +47,10 @@ const ForecastDisplay = ({ forecastData }) => {
                   <p className="text-xs">{item.weather[0].description}</p>
                 </div>
                 {index < Object.keys(dayData.times).length - 1 && (
-                  <div className="w-4/5 h-px bg-stone-500 my-2 mx-auto"></div>
+                  <div
+                    className="w-4/5 h-px my-2 mx-auto"
+                    style={{ backgroundColor: "var(--color-separator)" }}
+                  ></div>
                 )}
               </React.Fragment>
             ))}
@@ -49,10 +58,6 @@ const ForecastDisplay = ({ forecastData }) => {
         ))}
       </div>
     </div>
-  );
-};
-
-export default ForecastDisplay;
   );
 };
 

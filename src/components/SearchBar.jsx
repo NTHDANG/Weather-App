@@ -102,7 +102,7 @@ const SearchBar = ({ onSearch }) => {
           ref={inputRef}
           type="text"
           placeholder="Nhập tên thành phố"
-          className="h-[50px] border-none outline-none rounded-full pl-[25px] text-stone-300 bg-neutral-800 flex-grow"
+          className="h-[50px] border-none outline-none rounded-full pl-[25px] flex-grow" style={{ color: 'var(--color-input-text)', backgroundColor: 'var(--color-input-bg)' }}
           onChange={handleInputChange}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
@@ -118,15 +118,17 @@ const SearchBar = ({ onSearch }) => {
           src={search_icon}
           alt="Search Icon"
           onClick={handleSearchClick}
-          className="w-[50px] p-[15px] rounded-full bg-neutral-800 cursor-pointer"
+          className="w-[50px] p-[15px] rounded-full cursor-pointer" style={{ backgroundColor: 'var(--color-input-bg)' }}
         />
       </div>
       {showSuggestions && suggestions.length > 0 && (
-        <ul className="absolute top-full mt-2 w-full bg-neutral-700 rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto">
+        <ul className="absolute top-full mt-2 w-full rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto" style={{ backgroundColor: 'var(--color-suggestion-bg)' }}>
           {suggestions.map((city) => (
             <li
               key={city}
-              className="p-2 cursor-pointer hover:bg-neutral-600 text-stone-300"
+              className="p-2 cursor-pointer" style={{ color: 'var(--color-input-text)' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-suggestion-hover-bg)'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--color-suggestion-bg)'}
               onClick={() => handleSelectSuggestion(city)}
             >
               {city}

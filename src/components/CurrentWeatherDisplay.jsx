@@ -7,7 +7,7 @@ const CurrentWeatherDisplay = ({ data }) => {
   // Nếu không có dữ liệu, hiển thị thông báo yêu cầu nhập thành phố
   if (!data) {
     return (
-      <p className="text-stone-300 text-base mt-5">
+      <p className="text-base mt-5" style={{ color: 'var(--color-text-primary)' }}>
         Enter a city to get weather data.
       </p>
     );
@@ -17,9 +17,11 @@ const CurrentWeatherDisplay = ({ data }) => {
   return (
     <>
       <img src={data.icon} alt="Weather Icon" className="w-[75px] mt-[20px]" />
-      <p className="text-stone-300 text-[45px]">{data.temperature}°c</p>
-      <p className="text-stone-300 text-[20px]">{data.location}</p>
-      <div className="w-full mt-[50px] text-stone-300 flex justify-around">
+      <p className="text-[45px]" style={{ color: 'var(--color-text-primary)' }}>
+        {data.temperature}°c
+      </p>
+      <p className="text-[20px]" style={{ color: 'var(--color-text-primary)' }}>{data.location}</p>
+      <div className="w-full mt-[50px] flex justify-around" style={{ color: 'var(--color-text-primary)' }}>
         {/* độ ẩm */}
         <div className="flex items-start gap-1.5 text-[20px]">
           <img
